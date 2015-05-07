@@ -28,175 +28,186 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.execFileBtn = new System.Windows.Forms.Button();
             this.inputFileBtn = new System.Windows.Forms.Button();
-            this.outputFileBtn = new System.Windows.Forms.Button();
-            this.execFileTextbox = new System.Windows.Forms.TextBox();
-            this.inputFileTextBox = new System.Windows.Forms.TextBox();
-            this.outputFileTextBox = new System.Windows.Forms.TextBox();
+            this.portTextBox = new System.Windows.Forms.TextBox();
+            this.xmlFileTextBox = new System.Windows.Forms.TextBox();
+            this.xmlfilelabel = new System.Windows.Forms.Label();
+            this.PortLabel = new System.Windows.Forms.Label();
+            this.createPeerBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.addPeerTextBox = new System.Windows.Forms.TextBox();
+            this.addPeerBtn = new System.Windows.Forms.Button();
+            this.showPeersTextBox = new System.Windows.Forms.TextBox();
+            this.knownPeers = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.musicToSearchTextBox = new System.Windows.Forms.TextBox();
+            this.searchMusicBtn = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.refreshBtn = new System.Windows.Forms.Button();
-            this.jobsListView = new System.Windows.Forms.ListView();
-            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.submitBtn = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // execFileBtn
-            // 
-            this.execFileBtn.Location = new System.Drawing.Point(242, 22);
-            this.execFileBtn.Name = "execFileBtn";
-            this.execFileBtn.Size = new System.Drawing.Size(30, 23);
-            this.execFileBtn.TabIndex = 0;
-            this.execFileBtn.Text = "...";
-            this.execFileBtn.UseVisualStyleBackColor = true;
-            this.execFileBtn.Click += new System.EventHandler(this.execFileBtn_Click);
             // 
             // inputFileBtn
             // 
-            this.inputFileBtn.Location = new System.Drawing.Point(242, 69);
+            this.inputFileBtn.Location = new System.Drawing.Point(292, 5);
             this.inputFileBtn.Name = "inputFileBtn";
             this.inputFileBtn.Size = new System.Drawing.Size(30, 23);
             this.inputFileBtn.TabIndex = 1;
             this.inputFileBtn.Text = "...";
             this.inputFileBtn.UseVisualStyleBackColor = true;
-            this.inputFileBtn.Click += new System.EventHandler(this.inputFileBtn_Click);
             // 
-            // outputFileBtn
+            // portTextBox
             // 
-            this.outputFileBtn.Location = new System.Drawing.Point(242, 106);
-            this.outputFileBtn.Name = "outputFileBtn";
-            this.outputFileBtn.Size = new System.Drawing.Size(30, 23);
-            this.outputFileBtn.TabIndex = 2;
-            this.outputFileBtn.Text = "...";
-            this.outputFileBtn.UseVisualStyleBackColor = true;
-            this.outputFileBtn.Click += new System.EventHandler(this.outputFileBtn_Click);
+            this.portTextBox.Location = new System.Drawing.Point(57, 6);
+            this.portTextBox.Name = "portTextBox";
+            this.portTextBox.Size = new System.Drawing.Size(73, 20);
+            this.portTextBox.TabIndex = 3;
             // 
-            // execFileTextbox
+            // xmlFileTextBox
             // 
-            this.execFileTextbox.Location = new System.Drawing.Point(12, 24);
-            this.execFileTextbox.Name = "execFileTextbox";
-            this.execFileTextbox.Size = new System.Drawing.Size(224, 20);
-            this.execFileTextbox.TabIndex = 3;
+            this.xmlFileTextBox.Location = new System.Drawing.Point(208, 7);
+            this.xmlFileTextBox.Name = "xmlFileTextBox";
+            this.xmlFileTextBox.Size = new System.Drawing.Size(78, 20);
+            this.xmlFileTextBox.TabIndex = 4;
             // 
-            // inputFileTextBox
+            // xmlfilelabel
             // 
-            this.inputFileTextBox.Location = new System.Drawing.Point(12, 69);
-            this.inputFileTextBox.Name = "inputFileTextBox";
-            this.inputFileTextBox.Size = new System.Drawing.Size(224, 20);
-            this.inputFileTextBox.TabIndex = 4;
+            this.xmlfilelabel.AutoSize = true;
+            this.xmlfilelabel.Location = new System.Drawing.Point(154, 9);
+            this.xmlfilelabel.Name = "xmlfilelabel";
+            this.xmlfilelabel.Size = new System.Drawing.Size(48, 13);
+            this.xmlfilelabel.TabIndex = 6;
+            this.xmlfilelabel.Text = "XML File";
             // 
-            // outputFileTextBox
+            // PortLabel
             // 
-            this.outputFileTextBox.Location = new System.Drawing.Point(12, 108);
-            this.outputFileTextBox.Name = "outputFileTextBox";
-            this.outputFileTextBox.Size = new System.Drawing.Size(224, 20);
-            this.outputFileTextBox.TabIndex = 5;
+            this.PortLabel.AutoSize = true;
+            this.PortLabel.Location = new System.Drawing.Point(25, 9);
+            this.PortLabel.Name = "PortLabel";
+            this.PortLabel.Size = new System.Drawing.Size(26, 13);
+            this.PortLabel.TabIndex = 7;
+            this.PortLabel.Text = "Port";
+            // 
+            // createPeerBtn
+            // 
+            this.createPeerBtn.Location = new System.Drawing.Point(346, 5);
+            this.createPeerBtn.Name = "createPeerBtn";
+            this.createPeerBtn.Size = new System.Drawing.Size(98, 36);
+            this.createPeerBtn.TabIndex = 12;
+            this.createPeerBtn.Text = "Create Peer";
+            this.createPeerBtn.UseVisualStyleBackColor = true;
+            this.createPeerBtn.Click += new System.EventHandler(this.CreatePeerBtn_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(73, 9);
+            this.label1.Location = new System.Drawing.Point(12, 67);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Path Executável";
+            this.label1.Size = new System.Drawing.Size(76, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Add Peer Port:";
+            // 
+            // addPeerTextBox
+            // 
+            this.addPeerTextBox.Location = new System.Drawing.Point(94, 64);
+            this.addPeerTextBox.Name = "addPeerTextBox";
+            this.addPeerTextBox.Size = new System.Drawing.Size(108, 20);
+            this.addPeerTextBox.TabIndex = 14;
+            // 
+            // addPeerBtn
+            // 
+            this.addPeerBtn.Location = new System.Drawing.Point(208, 64);
+            this.addPeerBtn.Name = "addPeerBtn";
+            this.addPeerBtn.Size = new System.Drawing.Size(61, 20);
+            this.addPeerBtn.TabIndex = 15;
+            this.addPeerBtn.Text = "Add";
+            this.addPeerBtn.UseVisualStyleBackColor = true;
+            this.addPeerBtn.Click += new System.EventHandler(this.addPeerBtn_Click);
+            // 
+            // showPeersTextBox
+            // 
+            this.showPeersTextBox.Location = new System.Drawing.Point(15, 112);
+            this.showPeersTextBox.Multiline = true;
+            this.showPeersTextBox.Name = "showPeersTextBox";
+            this.showPeersTextBox.ReadOnly = true;
+            this.showPeersTextBox.Size = new System.Drawing.Size(432, 62);
+            this.showPeersTextBox.TabIndex = 16;
+            // 
+            // knownPeers
+            // 
+            this.knownPeers.AutoSize = true;
+            this.knownPeers.Location = new System.Drawing.Point(12, 96);
+            this.knownPeers.Name = "knownPeers";
+            this.knownPeers.Size = new System.Drawing.Size(88, 13);
+            this.knownPeers.TabIndex = 17;
+            this.knownPeers.Text = "Added Peer Port:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(73, 53);
+            this.label2.Location = new System.Drawing.Point(12, 196);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Path Ficheiro Input";
+            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Music Name:";
+            // 
+            // musicToSearchTextBox
+            // 
+            this.musicToSearchTextBox.Location = new System.Drawing.Point(82, 193);
+            this.musicToSearchTextBox.Name = "musicToSearchTextBox";
+            this.musicToSearchTextBox.Size = new System.Drawing.Size(298, 20);
+            this.musicToSearchTextBox.TabIndex = 19;
+            // 
+            // searchMusicBtn
+            // 
+            this.searchMusicBtn.Location = new System.Drawing.Point(386, 193);
+            this.searchMusicBtn.Name = "searchMusicBtn";
+            this.searchMusicBtn.Size = new System.Drawing.Size(61, 20);
+            this.searchMusicBtn.TabIndex = 20;
+            this.searchMusicBtn.Text = "Search";
+            this.searchMusicBtn.UseVisualStyleBackColor = true;
+            this.searchMusicBtn.Click += new System.EventHandler(this.searchMusicBtn_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 237);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(432, 90);
+            this.textBox1.TabIndex = 21;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(73, 92);
+            this.label3.Location = new System.Drawing.Point(12, 221);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Path Ficheiro Output";
-            // 
-            // refreshBtn
-            // 
-            this.refreshBtn.Location = new System.Drawing.Point(213, 181);
-            this.refreshBtn.Name = "refreshBtn";
-            this.refreshBtn.Size = new System.Drawing.Size(59, 39);
-            this.refreshBtn.TabIndex = 10;
-            this.refreshBtn.Text = "Refresh";
-            this.refreshBtn.UseVisualStyleBackColor = true;
-            this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
-            // 
-            // jobsListView
-            // 
-            this.jobsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Id,
-            this.Status});
-            this.jobsListView.FullRowSelect = true;
-            this.jobsListView.Location = new System.Drawing.Point(12, 163);
-            this.jobsListView.MultiSelect = false;
-            this.jobsListView.Name = "jobsListView";
-            this.jobsListView.Size = new System.Drawing.Size(195, 87);
-            this.jobsListView.TabIndex = 11;
-            this.jobsListView.UseCompatibleStateImageBehavior = false;
-            this.jobsListView.View = System.Windows.Forms.View.Details;
-            // 
-            // Id
-            // 
-            this.Id.Text = "Id";
-            this.Id.Width = 55;
-            // 
-            // Status
-            // 
-            this.Status.Text = "Status";
-            this.Status.Width = 122;
-            // 
-            // submitBtn
-            // 
-            this.submitBtn.Location = new System.Drawing.Point(84, 134);
-            this.submitBtn.Name = "submitBtn";
-            this.submitBtn.Size = new System.Drawing.Size(98, 23);
-            this.submitBtn.TabIndex = 12;
-            this.submitBtn.Text = "Submit";
-            this.submitBtn.UseVisualStyleBackColor = true;
-            this.submitBtn.Click += new System.EventHandler(this.submitBtn_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 139);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Jobs";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Requests:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.submitBtn);
-            this.Controls.Add(this.jobsListView);
-            this.Controls.Add(this.refreshBtn);
+            this.ClientSize = new System.Drawing.Size(466, 343);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.searchMusicBtn);
+            this.Controls.Add(this.musicToSearchTextBox);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.knownPeers);
+            this.Controls.Add(this.showPeersTextBox);
+            this.Controls.Add(this.addPeerBtn);
+            this.Controls.Add(this.addPeerTextBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.outputFileTextBox);
-            this.Controls.Add(this.inputFileTextBox);
-            this.Controls.Add(this.execFileTextbox);
-            this.Controls.Add(this.outputFileBtn);
+            this.Controls.Add(this.createPeerBtn);
+            this.Controls.Add(this.PortLabel);
+            this.Controls.Add(this.xmlfilelabel);
+            this.Controls.Add(this.xmlFileTextBox);
+            this.Controls.Add(this.portTextBox);
             this.Controls.Add(this.inputFileBtn);
-            this.Controls.Add(this.execFileBtn);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,21 +215,22 @@
 
         #endregion
 
-        private System.Windows.Forms.Button execFileBtn;
         private System.Windows.Forms.Button inputFileBtn;
-        private System.Windows.Forms.Button outputFileBtn;
-        private System.Windows.Forms.TextBox execFileTextbox;
-        private System.Windows.Forms.TextBox inputFileTextBox;
-        private System.Windows.Forms.TextBox outputFileTextBox;
+        private System.Windows.Forms.TextBox portTextBox;
+        private System.Windows.Forms.TextBox xmlFileTextBox;
+        private System.Windows.Forms.Label xmlfilelabel;
+        private System.Windows.Forms.Label PortLabel;
+        private System.Windows.Forms.Button createPeerBtn;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox addPeerTextBox;
+        private System.Windows.Forms.Button addPeerBtn;
+        private System.Windows.Forms.TextBox showPeersTextBox;
+        private System.Windows.Forms.Label knownPeers;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox musicToSearchTextBox;
+        private System.Windows.Forms.Button searchMusicBtn;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button refreshBtn;
-        private System.Windows.Forms.ListView jobsListView;
-        private System.Windows.Forms.Button submitBtn;
-        private System.Windows.Forms.ColumnHeader Id;
-        private System.Windows.Forms.ColumnHeader Status;
-        private System.Windows.Forms.Label label4;
     }
 }
 
