@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Remoting;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Http;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Client
@@ -13,14 +14,21 @@ namespace Client
     {
         private static int pos = 0;
         private Peer _peer;
+        private SynchronizationContext syncCtx;
 
         public Form1()
         {
             InitializeComponent();
+            this.syncCtx = SynchronizationContext.Current;
         }
 
         private void CreatePeerBtn_Click(object sender, EventArgs e)
         {
+            portTextBox.ReadOnly = true;
+            xmlFileTextBox.ReadOnly = true;
+            addPeerTextBox.ReadOnly = false;
+            musicToSearchTextBox.ReadOnly = false;
+
             int port = int.Parse(portTextBox.Text);
             string xmlFile;
             if ((xmlFile = xmlFileTextBox.Text) == null)
@@ -28,6 +36,7 @@ namespace Client
                 xmlFileTextBox.Text = "This field cannot be empty";
                 return;
             }
+
 
             SoapServerFormatterSinkProvider serverProv = new SoapServerFormatterSinkProvider();
             serverProv.TypeFilterLevel = System.Runtime.Serialization.Formatters.TypeFilterLevel.Full;
@@ -46,17 +55,16 @@ namespace Client
                             typeof(Peer),
                             "http://localhost:" + port + "/RemotePeer.soap");
 
-            showPeersTextBox.Text = a;
-
             _peer.setXML(xmlFile);
-            _peer.set(port);
-
-
+            _peer.SetOutputComunication(this);
+            _peer.SetName(port);
         }
 
         private void addPeerBtn_Click(object sender, EventArgs e)
         {
-            int port = int.Parse(addPeerTextBox.Text);
+            string peerToAdd = addPeerTextBox.Text;
+            if (peerToAdd.Length == 0) return;
+            int port = int.Parse(peerToAdd);
             _peer.AddPeer(port);
         }
 
@@ -65,80 +73,14 @@ namespace Client
             string music = musicToSearchTextBox.Text;
             _peer.SearchMusic(music);
         }
-    }
 
-    public class Peer : MarshalByRefObject, IPeer
-    {
-        private readonly List<string> _myMusics = new List<string>();
-        private readonly List<IPeer> _myKnownPeers = new List<IPeer>();
-        private readonly Dictionary<string, IPeer> _musicsOnKnownPeers = new Dictionary<string, IPeer>();
-        private string _xmlFile;
-        private int name;
-
-        public void SearchMusic(string musicName)
+        public void SetOutputMessage(string self)
         {
-            SearchMusic(this, musicName);
+            syncCtx.Post(state => outputTextBox.AppendText(self + "\n"), null);
         }
-
-        public void SearchMusic(IPeer p, string musicName)
+        public void SetShowPeersTextBox(string self)
         {
-            if(_myMusics.Contains(musicName))
-            {
-                //ja tem no proprio
-                return;
-            }
-            if (_musicsOnKnownPeers.ContainsKey(musicName))
-            {
-                //sei quem tem
-                IPeer peer = _musicsOnKnownPeers[musicName];
-                p.MarkAsFound(peer, musicName);
-                return;
-            }
-            foreach (IPeer peer in _myKnownPeers)
-            {
-                peer.SearchMusic(p, musicName);
-            }
+            syncCtx.Post(state => showPeersTextBox.AppendText(self + "\n"), null);
         }
-
-        public void MarkAsFound(IPeer p, string music)
-        {
-            if (!_musicsOnKnownPeers.ContainsKey(music))
-            {
-                _musicsOnKnownPeers.Add(music, p);
-            }
-        }
-
-        public void setXML(string xmlFile)
-        {
-            _xmlFile = xmlFile;
-            loadMyMusics();
-        }
-
-        private void loadMyMusics()
-        {
-            string[] a = _xmlFile.Split(';');
-            a.ToList().ForEach( m => _myMusics.Add(m));
-        }
-
-        public void AddPeer(int port)
-        {
-            string a = "http://localhost:" + port + "/RemoteServer.soap";
-
-            IPeer p = (IPeer)Activator.GetObject(
-                            typeof(IPeer),
-                            "http://localhost:" + port + "/RemoteServer.soap");
-            _myKnownPeers.Add(p);
-        }
-
-        public void set(int port)
-        {
-            this.name = port;
-        }
-    }
-
-    public interface IPeer
-    {
-        void SearchMusic(IPeer p, string musicName);
-        void MarkAsFound(IPeer p, string music);
     }
 }

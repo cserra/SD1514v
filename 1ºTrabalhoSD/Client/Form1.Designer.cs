@@ -42,7 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.musicToSearchTextBox = new System.Windows.Forms.TextBox();
             this.searchMusicBtn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.outputTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -91,7 +91,7 @@
             // 
             this.createPeerBtn.Location = new System.Drawing.Point(346, 5);
             this.createPeerBtn.Name = "createPeerBtn";
-            this.createPeerBtn.Size = new System.Drawing.Size(98, 36);
+            this.createPeerBtn.Size = new System.Drawing.Size(98, 23);
             this.createPeerBtn.TabIndex = 12;
             this.createPeerBtn.Text = "Create Peer";
             this.createPeerBtn.UseVisualStyleBackColor = true;
@@ -110,6 +110,7 @@
             // 
             this.addPeerTextBox.Location = new System.Drawing.Point(94, 64);
             this.addPeerTextBox.Name = "addPeerTextBox";
+            this.addPeerTextBox.ReadOnly = true;
             this.addPeerTextBox.Size = new System.Drawing.Size(108, 20);
             this.addPeerTextBox.TabIndex = 14;
             // 
@@ -154,6 +155,7 @@
             // 
             this.musicToSearchTextBox.Location = new System.Drawing.Point(82, 193);
             this.musicToSearchTextBox.Name = "musicToSearchTextBox";
+            this.musicToSearchTextBox.ReadOnly = true;
             this.musicToSearchTextBox.Size = new System.Drawing.Size(298, 20);
             this.musicToSearchTextBox.TabIndex = 19;
             // 
@@ -167,23 +169,23 @@
             this.searchMusicBtn.UseVisualStyleBackColor = true;
             this.searchMusicBtn.Click += new System.EventHandler(this.searchMusicBtn_Click);
             // 
-            // textBox1
+            // outputTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 237);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(432, 90);
-            this.textBox1.TabIndex = 21;
+            this.outputTextBox.Location = new System.Drawing.Point(12, 237);
+            this.outputTextBox.Multiline = true;
+            this.outputTextBox.Name = "outputTextBox";
+            this.outputTextBox.ReadOnly = true;
+            this.outputTextBox.Size = new System.Drawing.Size(432, 90);
+            this.outputTextBox.TabIndex = 21;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 221);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.Size = new System.Drawing.Size(42, 13);
             this.label3.TabIndex = 22;
-            this.label3.Text = "Requests:";
+            this.label3.Text = "Output:";
             // 
             // Form1
             // 
@@ -191,7 +193,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(466, 343);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.outputTextBox);
             this.Controls.Add(this.searchMusicBtn);
             this.Controls.Add(this.musicToSearchTextBox);
             this.Controls.Add(this.label2);
@@ -229,7 +231,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox musicToSearchTextBox;
         private System.Windows.Forms.Button searchMusicBtn;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox outputTextBox;
         private System.Windows.Forms.Label label3;
     }
 }
