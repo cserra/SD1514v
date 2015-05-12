@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace Client
@@ -14,9 +15,10 @@ namespace Client
             TextWriter writer = new StreamWriter(""); // peer.path
             
             PeerConfig peerConfig = new PeerConfig();
-            peerConfig.AssociatedPeers = peer.AssociatedPeers;
-            peerConfig.Musics = peer.mymusic;
-            peerConfig.PeerUri = peer.uri;
+            //TODO os AssociatePeers sao IPeer e tem de ser string
+            //peerConfig.AssociatedPeers = peer.AssociatedPeers;
+            peerConfig.Musics = peer._myMusics.ToArray();
+            peerConfig.PeerUri = peer._uri;
             serializer.Serialize(writer, peerConfig);
             writer.Close();
         }
@@ -33,9 +35,9 @@ namespace Client
             /* Use the Deserialize method to restore the object's state with
             data from the XML document. */
             peerConfig = (PeerConfig)serializer.Deserialize(fs);
-            peer.AssociatedPeers = peerConfig.AssociatedPeers;
-            peer.mymusic = peerConfig.Musics;
-            peer.uri = peerConfig.PeerUri;
+            peer.AssociatePeers(peerConfig.AssociatedPeers);
+            peer._myMusics = peerConfig.Musics.ToList();
+            peer._uri = peerConfig.PeerUri;
             
             return true;
         } 

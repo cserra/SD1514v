@@ -10,12 +10,12 @@ namespace Client
 
     public class Peer : MarshalByRefObject, IPeer
     {
-        private readonly List<string> _myMusics = new List<string>();
-        private readonly List<IPeer> _myKnownPeers = new List<IPeer>();
+        public List<string> _myMusics;
+        public List<IPeer> _myKnownPeers = new List<IPeer>();
         private readonly Dictionary<string, IPeer> _musicsOnKnownPeers = new Dictionary<string, IPeer>();
         private string _xmlFile;
         private Form1 form;
-        private string name;
+        public string _uri;
 
         private const int ttl = 2;
 
@@ -79,9 +79,9 @@ namespace Client
             string[] a = _xmlFile.Split(';');
             a.ToList().ForEach(m => _myMusics.Add(m));
         }
-        public void AddPeer(int port)
+        public void AddPeer(string peerUri)
         {
-            IPeer p = (IPeer)Activator.GetObject(typeof(IPeer), "http://localhost:" + port + "/RemotePeer.soap");
+            IPeer p = (IPeer)Activator.GetObject(typeof(IPeer), "http://localhost:" + peerUri + "/RemotePeer.soap");
             try
             {
                 if (p.TestConnection()) _myKnownPeers.Add(p);
@@ -90,10 +90,18 @@ namespace Client
             catch (Exception){SetOutputMsg("Invalid peer params. Not added!!!");}
         }
         public void SetOutputComunication(Form1 form1){this.form = form1;}
-        public string GetPeerName(){return name;}
-        public void SetName(int port){this.name = port + "";}
+        public string GetPeerName(){return _uri;}
+        public void SetName(int port){this._uri = port + "";}
         private void SetOutputMsg(string msg) { form.SetOutputMessage(msg); }
         private void SetShowPeersTextBox(string msg) { form.SetShowPeersTextBox(msg); }
+
+        public void AssociatePeers(string[] associatedPeers)
+        {
+            foreach(string p in associatedPeers)
+            {
+                AddPeer(p);
+            }
+        }
     }
 
     public interface IPeer

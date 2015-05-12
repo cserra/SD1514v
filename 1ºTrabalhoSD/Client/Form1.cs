@@ -65,7 +65,7 @@ namespace Client
             string peerToAdd = addPeerTextBox.Text;
             if (peerToAdd.Length == 0) return;
             int port = int.Parse(peerToAdd);
-            _peer.AddPeer(port);
+            _peer.AddPeer(port + "");
         }
 
         private void searchMusicBtn_Click(object sender, EventArgs e)
