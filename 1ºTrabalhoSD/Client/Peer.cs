@@ -10,12 +10,15 @@ namespace Client
 
     public class Peer : MarshalByRefObject, IPeer
     {
-        public List<string> _myMusics;
-        public List<IPeer> _myKnownPeers = new List<IPeer>();
+        public List<string> MyMusics = new List<string>();
+        public List<string> MyAlbum = new List<string>();
+        public List<IPeer> MyKnownPeers = new List<IPeer>();
         private readonly Dictionary<string, IPeer> _musicsOnKnownPeers = new Dictionary<string, IPeer>();
         private string _xmlFile;
-        private Form1 form;
-        public string _uri;
+        private Form1 _form;
+        public string Uri;
+        public string ConnectionType;
+        public string Port;
 
         private const int ttl = 2;
 
@@ -26,9 +29,9 @@ namespace Client
         public bool TestConnection() { return true; }
         public void SearchMusic(IPeer p, string musicName, int ttl)
         {
-            SetOutputMsg("Request from " + p.GetPeerName());
+            SetOutputMsg("Request from " + p.GetPeerURI());
             SetOutputMsg("Searching for music " + musicName);
-            if (_myMusics.Contains(musicName))
+            if (MyMusics.Contains(musicName))
             {
                 p.MarkAsFound(this, musicName);
                 return;
@@ -47,7 +50,7 @@ namespace Client
                 return;
             }
             if (--ttl == 0) return;
-            foreach (IPeer peer in _myKnownPeers)
+            foreach (IPeer peer in MyKnownPeers)
             {
                 try
                 {
@@ -55,7 +58,7 @@ namespace Client
                 }
                 catch (Exception)
                 {
-                    _myKnownPeers.Remove(peer);
+                    MyKnownPeers.Remove(peer);
                 }
 
             }
@@ -65,42 +68,32 @@ namespace Client
             if (!_musicsOnKnownPeers.ContainsKey(music))
             {
                 _musicsOnKnownPeers.Add(music, p);
-                form.SetOutputMessage("Found music in Peer " + p.GetPeerName());
+                _form.SetOutputMessage("Found music in Peer " + p.GetPeerURI());
             }
             
         }
-        public void setXML(string xmlFile)
-        {
-            _xmlFile = xmlFile;
-            loadMyMusics();
-        }
-        private void loadMyMusics()
-        {
-            string[] a = _xmlFile.Split(';');
-            a.ToList().ForEach(m => _myMusics.Add(m));
-        }
+
+        public string GetPeerURI(){return Uri;}
+        private void SetOutputMsg(string msg) { _form.SetOutputMessage(msg); }
+        private void SetShowPeersTextBox(string msg) { _form.SetShowPeersTextBox(msg); }
+
+        public void AddMusic(string music){MyMusics.Add(music);}
+        public void AddAlBum(string album){MyAlbum.Add(album);}
+        public void SetUri(string peerUri){this.Uri = peerUri;}
         public void AddPeer(string peerUri)
         {
-            IPeer p = (IPeer)Activator.GetObject(typeof(IPeer), "http://localhost:" + peerUri + "/RemotePeer.soap");
+            IPeer p = (IPeer)Activator.GetObject(typeof(IPeer), peerUri);
             try
             {
-                if (p.TestConnection()) _myKnownPeers.Add(p);
-                SetShowPeersTextBox("" + p.GetPeerName());
+                if (p.TestConnection()) MyKnownPeers.Add(p);
+                SetShowPeersTextBox("" + p.GetPeerURI());
             }
-            catch (Exception){SetOutputMsg("Invalid peer params. Not added!!!");}
+            catch (Exception) { SetOutputMsg("Invalid peer params. Not added!!!"); }
         }
-        public void SetOutputComunication(Form1 form1){this.form = form1;}
-        public string GetPeerName(){return _uri;}
-        public void SetName(int port){this._uri = port + "";}
-        private void SetOutputMsg(string msg) { form.SetOutputMessage(msg); }
-        private void SetShowPeersTextBox(string msg) { form.SetShowPeersTextBox(msg); }
 
-        public void AssociatePeers(string[] associatedPeers)
+        public void SetForm(Form1 form1)
         {
-            foreach(string p in associatedPeers)
-            {
-                AddPeer(p);
-            }
+            this._form = form1;
         }
     }
 
@@ -109,6 +102,6 @@ namespace Client
         bool TestConnection();
         void SearchMusic(IPeer p, string musicName, int ttl);
         void MarkAsFound(IPeer p, string music);
-        string GetPeerName();
+        string GetPeerURI();
     }
 }

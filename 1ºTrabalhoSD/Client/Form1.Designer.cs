@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.inputFileBtn = new System.Windows.Forms.Button();
-            this.portTextBox = new System.Windows.Forms.TextBox();
             this.xmlFileTextBox = new System.Windows.Forms.TextBox();
             this.xmlfilelabel = new System.Windows.Forms.Label();
-            this.PortLabel = new System.Windows.Forms.Label();
             this.createPeerBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.addPeerTextBox = new System.Windows.Forms.TextBox();
@@ -44,48 +41,24 @@
             this.searchMusicBtn = new System.Windows.Forms.Button();
             this.outputTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.pathBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // inputFileBtn
-            // 
-            this.inputFileBtn.Location = new System.Drawing.Point(292, 5);
-            this.inputFileBtn.Name = "inputFileBtn";
-            this.inputFileBtn.Size = new System.Drawing.Size(30, 23);
-            this.inputFileBtn.TabIndex = 1;
-            this.inputFileBtn.Text = "...";
-            this.inputFileBtn.UseVisualStyleBackColor = true;
-            // 
-            // portTextBox
-            // 
-            this.portTextBox.Location = new System.Drawing.Point(57, 6);
-            this.portTextBox.Name = "portTextBox";
-            this.portTextBox.Size = new System.Drawing.Size(73, 20);
-            this.portTextBox.TabIndex = 3;
             // 
             // xmlFileTextBox
             // 
-            this.xmlFileTextBox.Location = new System.Drawing.Point(208, 7);
+            this.xmlFileTextBox.Location = new System.Drawing.Point(82, 7);
             this.xmlFileTextBox.Name = "xmlFileTextBox";
-            this.xmlFileTextBox.Size = new System.Drawing.Size(78, 20);
+            this.xmlFileTextBox.Size = new System.Drawing.Size(216, 20);
             this.xmlFileTextBox.TabIndex = 4;
             // 
             // xmlfilelabel
             // 
             this.xmlfilelabel.AutoSize = true;
-            this.xmlfilelabel.Location = new System.Drawing.Point(154, 9);
+            this.xmlfilelabel.Location = new System.Drawing.Point(12, 10);
             this.xmlfilelabel.Name = "xmlfilelabel";
             this.xmlfilelabel.Size = new System.Drawing.Size(48, 13);
             this.xmlfilelabel.TabIndex = 6;
             this.xmlfilelabel.Text = "XML File";
-            // 
-            // PortLabel
-            // 
-            this.PortLabel.AutoSize = true;
-            this.PortLabel.Location = new System.Drawing.Point(25, 9);
-            this.PortLabel.Name = "PortLabel";
-            this.PortLabel.Size = new System.Drawing.Size(26, 13);
-            this.PortLabel.TabIndex = 7;
-            this.PortLabel.Text = "Port";
             // 
             // createPeerBtn
             // 
@@ -104,7 +77,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 13);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Add Peer Port:";
+            this.label1.Text = "Add Peer URI:";
             // 
             // addPeerTextBox
             // 
@@ -187,11 +160,22 @@
             this.label3.TabIndex = 22;
             this.label3.Text = "Output:";
             // 
+            // pathBtn
+            // 
+            this.pathBtn.Location = new System.Drawing.Point(304, 5);
+            this.pathBtn.Name = "pathBtn";
+            this.pathBtn.Size = new System.Drawing.Size(36, 23);
+            this.pathBtn.TabIndex = 23;
+            this.pathBtn.Text = "...";
+            this.pathBtn.UseVisualStyleBackColor = true;
+            this.pathBtn.Click += new System.EventHandler(this.pathBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(466, 343);
+            this.Controls.Add(this.pathBtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.outputTextBox);
             this.Controls.Add(this.searchMusicBtn);
@@ -203,11 +187,8 @@
             this.Controls.Add(this.addPeerTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.createPeerBtn);
-            this.Controls.Add(this.PortLabel);
             this.Controls.Add(this.xmlfilelabel);
             this.Controls.Add(this.xmlFileTextBox);
-            this.Controls.Add(this.portTextBox);
-            this.Controls.Add(this.inputFileBtn);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -217,11 +198,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button inputFileBtn;
-        private System.Windows.Forms.TextBox portTextBox;
         private System.Windows.Forms.TextBox xmlFileTextBox;
         private System.Windows.Forms.Label xmlfilelabel;
-        private System.Windows.Forms.Label PortLabel;
         private System.Windows.Forms.Button createPeerBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox addPeerTextBox;
@@ -233,6 +211,7 @@
         private System.Windows.Forms.Button searchMusicBtn;
         private System.Windows.Forms.TextBox outputTextBox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button pathBtn;
     }
 }
 

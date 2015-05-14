@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Remoting;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Http;
+using System.Runtime.Remoting.Channels.Tcp;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -24,48 +25,57 @@ namespace Client
 
         private void CreatePeerBtn_Click(object sender, EventArgs e)
         {
-            portTextBox.ReadOnly = true;
+            if (xmlFileTextBox.Text.Equals(""))
+            {
+                outputTextBox.AppendText("Must choose path!!");
+                return;
+            }
             xmlFileTextBox.ReadOnly = true;
             addPeerTextBox.ReadOnly = false;
             musicToSearchTextBox.ReadOnly = false;
 
-            int port = int.Parse(portTextBox.Text);
-            string xmlFile;
-            if ((xmlFile = xmlFileTextBox.Text) == null)
-            {
-                xmlFileTextBox.Text = "This field cannot be empty";
-                return;
-            }
-
+            ConfigFileManager cfm = new ConfigFileManager();
+            PeerConfig pc = cfm.Load(xmlFileTextBox.Text);
 
             SoapServerFormatterSinkProvider serverProv = new SoapServerFormatterSinkProvider();
             serverProv.TypeFilterLevel = System.Runtime.Serialization.Formatters.TypeFilterLevel.Full;
             SoapClientFormatterSinkProvider clientProv = new SoapClientFormatterSinkProvider();
-            IDictionary props = new Hashtable();
-            props["port"] = port;
-            HttpChannel ch = new HttpChannel(props, clientProv, serverProv);
-            ChannelServices.RegisterChannel(ch, false);
+            IDictionary props = new Hashtable(); 
+            props["port"] = pc.Port;
+
+            IChannel ch = null;
+            switch (pc.ConnectionType)
+            {
+                case "http":
+                    ch = new HttpChannel(props, clientProv, serverProv);
+                    break;
+                case "tcp":
+                    ch = new TcpChannel(props, clientProv, serverProv);
+                    break;
+            }
+            ChannelServices.RegisterChannel(ch);
 
             RemotingConfiguration.RegisterWellKnownServiceType(
                              typeof(Peer),"RemotePeer.soap",WellKnownObjectMode.Singleton);
 
-            string a = "http://localhost:" + port + "/RemotePeer.soap";
 
-            _peer = (Peer)Activator.GetObject(
-                            typeof(Peer),
-                            "http://localhost:" + port + "/RemotePeer.soap");
-
-            _peer.setXML(xmlFile);
-            _peer.SetOutputComunication(this);
-            _peer.SetName(port);
+            _peer = (Peer)Activator.GetObject(typeof(Peer),pc.PeerUri);
+            _peer.SetForm(this);
+            foreach (string music in pc.Musics){_peer.AddMusic(music);}
+            foreach (string album in pc.Albuns){_peer.AddAlBum(album);}
+            _peer.SetUri(pc.PeerUri);
+            if (pc.AssociatedPeers != null)
+                foreach (string p in pc.AssociatedPeers)
+                {
+                    _peer.AddPeer(p);
+                }
         }
 
         private void addPeerBtn_Click(object sender, EventArgs e)
         {
             string peerToAdd = addPeerTextBox.Text;
             if (peerToAdd.Length == 0) return;
-            int port = int.Parse(peerToAdd);
-            _peer.AddPeer(port + "");
+            _peer.AddPeer(peerToAdd);
         }
 
         private void searchMusicBtn_Click(object sender, EventArgs e)
@@ -81,6 +91,35 @@ namespace Client
         public void SetShowPeersTextBox(string self)
         {
             syncCtx.Post(state => showPeersTextBox.AppendText(self + "\n"), null);
+        }
+
+        private void pathBtn_Click(object sender, EventArgs e)
+        {
+            if (xmlFileTextBox.Text != null)
+            {
+                var FD = new System.Windows.Forms.OpenFileDialog();
+                if (FD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string fileToOpen = FD.FileName;
+                    xmlFileTextBox.Text = fileToOpen;
+                   // System.IO.FileInfo File = new System.IO.FileInfo(FD.FileName);
+
+                    //OR
+
+                    System.IO.StreamReader reader = new System.IO.StreamReader(fileToOpen);
+                    //etc
+                }
+
+
+
+
+
+                /*var folderBrowserDialog1 = new FolderBrowserDialog();
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    xmlFileTextBox.Text = folderBrowserDialog1.SelectedPath;
+                }*/
+            }
         }
     }
 }
