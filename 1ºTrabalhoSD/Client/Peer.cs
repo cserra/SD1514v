@@ -73,11 +73,19 @@ namespace Client
         public void SetForm(Form1 form1){_form = form1;}
         public void AddAssociatedPeer(string peerUri)
         {
-            IPeer p = (IPeer)Activator.GetObject(typeof(IPeer), peerUri);
+            try
+            {
+                IPeer p = (IPeer) Activator.GetObject(typeof (IPeer), peerUri);
+                if (p.TestConnection())
+                    MyKnownPeers.Add(p);
+                SetShowPeersTextBox("" + p.GetPeerURI());
+            }
+            catch (Exception e)
+            {
+                SetShowPeersTextBox("Error: " + e.Message);
+            }
             
-            if (p.TestConnection())
-                MyKnownPeers.Add(p);
-            SetShowPeersTextBox("" + p.GetPeerURI());
+            
       
         }
     }
