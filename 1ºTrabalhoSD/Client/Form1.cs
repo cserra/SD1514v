@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting;
-using System.Runtime.Remoting.Channels;
-using System.Runtime.Remoting.Channels.Http;
-using System.Runtime.Remoting.Channels.Tcp;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -13,84 +6,88 @@ namespace Client
 {
     public partial class Form1 : Form
     {
-        private static int pos = 0;
         private Peer _peer;
-        private SynchronizationContext syncCtx;
+        private readonly SynchronizationContext _syncCtx;
 
         public Form1()
         {
             InitializeComponent();
-            this.syncCtx = SynchronizationContext.Current;
+            _syncCtx = SynchronizationContext.Current;
         }
 
         private void CreatePeerBtn_Click(object sender, EventArgs e)
         {
             if (xmlFileTextBox.Text.Equals(""))
             {
-                outputTextBox.AppendText("Must choose path!!");
+                outputTextBox.Text = "You have to choose path!! Peer not created";
                 return;
             }
+          
+            try
+            {
+                //Load config file
+                PeerConfig pc = ConfigFileManager.Load(xmlFileTextBox.Text);
+                //Activate a remoting peer
+                _peer = PeerActivator.NewPeer(pc.Port, pc.PeerUri);
+                //Bind peer from config file to remoting peer
+                ConfigFileManager.BindPeerConfigToPeer(this, pc, _peer);
+            }
+            catch (Exception ex)
+            {
+                outputTextBox.Text = "Error creating peer. Error Message: "+ex.Message;
+                outputTextBox.AppendText("Peer not created");
+                return;
+            }
+
+            //change the form options for using after creating a peer
             xmlFileTextBox.ReadOnly = true;
             addPeerTextBox.ReadOnly = false;
             musicToSearchTextBox.ReadOnly = false;
-
-            ConfigFileManager cfm = new ConfigFileManager();
-            PeerConfig pc = cfm.Load(xmlFileTextBox.Text);
-
-            SoapServerFormatterSinkProvider serverProv = new SoapServerFormatterSinkProvider();
-            serverProv.TypeFilterLevel = System.Runtime.Serialization.Formatters.TypeFilterLevel.Full;
-            SoapClientFormatterSinkProvider clientProv = new SoapClientFormatterSinkProvider();
-            IDictionary props = new Hashtable(); 
-            props["port"] = pc.Port;
-
-            IChannel ch = null;
-            switch (pc.ConnectionType)
-            {
-                case "http":
-                    ch = new HttpChannel(props, clientProv, serverProv);
-                    break;
-                case "tcp":
-                    ch = new TcpChannel(props, clientProv, serverProv);
-                    break;
-            }
-            ChannelServices.RegisterChannel(ch);
-
-            RemotingConfiguration.RegisterWellKnownServiceType(
-                             typeof(Peer),"RemotePeer.soap",WellKnownObjectMode.Singleton);
-
-
-            _peer = (Peer)Activator.GetObject(typeof(Peer),pc.PeerUri);
-            _peer.SetForm(this);
-            foreach (string music in pc.Musics){_peer.AddMusic(music);}
-            foreach (string album in pc.Albuns){_peer.AddAlBum(album);}
-            _peer.SetUri(pc.PeerUri);
-            if (pc.AssociatedPeers != null)
-                foreach (string p in pc.AssociatedPeers)
-                {
-                    _peer.AddPeer(p);
-                }
+            outputTextBox.Text = "Peer created. Uri: "+_peer.GetPeerURI();
         }
 
         private void addPeerBtn_Click(object sender, EventArgs e)
         {
+            if (!CheckIfPeerIsCreated()) return;
             string peerToAdd = addPeerTextBox.Text;
-            if (peerToAdd.Length == 0) return;
-            _peer.AddPeer(peerToAdd);
+
+            try
+            {
+                if (peerToAdd.Length != 0)
+                    _peer.AddAssociatedPeer(peerToAdd);
+                else
+                    outputTextBox.Text = "You have to specify a URI!! Associated Peer not added";
+            }catch (Exception ex)
+            {
+                outputTextBox.Text = "Invalid peer params. Not added!!! " + ex.Message;
+            }
         }
 
         private void searchMusicBtn_Click(object sender, EventArgs e)
         {
+            if (!CheckIfPeerIsCreated()) return;
             string music = musicToSearchTextBox.Text;
-            _peer.SearchMusic(music);
+            _peer.SearchMusic(_peer, music, Peer.Ttl);
+        }
+
+        private Boolean CheckIfPeerIsCreated()
+        {
+            if (_peer == null)
+            {
+                outputTextBox.Text = "You have to create a Peer first!";
+                return false;
+            }
+            return true;
         }
 
         public void SetOutputMessage(string self)
         {
-            syncCtx.Post(state => outputTextBox.AppendText(self + "\n"), null);
+            _syncCtx.Post(state => outputTextBox.AppendText(self + "\n"), null);
         }
+
         public void SetShowPeersTextBox(string self)
         {
-            syncCtx.Post(state => showPeersTextBox.AppendText(self + "\n"), null);
+            _syncCtx.Post(state => showPeersTextBox.AppendText(self + "\n"), null);
         }
 
         private void pathBtn_Click(object sender, EventArgs e)

@@ -50,6 +50,7 @@
             this.xmlFileTextBox.Name = "xmlFileTextBox";
             this.xmlFileTextBox.Size = new System.Drawing.Size(216, 20);
             this.xmlFileTextBox.TabIndex = 4;
+            this.xmlFileTextBox.ReadOnly = true;
             // 
             // xmlfilelabel
             // 

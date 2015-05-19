@@ -51,8 +51,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConfigPeerManager.cs" />
+    <Compile Include="ConfigFileManager.cs" />
+    <Compile Include="IPeer.cs" />
     <Compile Include="Peer.cs" />
+    <Compile Include="PeerActivator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
