@@ -42,15 +42,18 @@
             this.outputTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pathBtn = new System.Windows.Forms.Button();
+            this.albumSearchMusicBtn = new System.Windows.Forms.Button();
+            this.albumToSearchTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // xmlFileTextBox
             // 
             this.xmlFileTextBox.Location = new System.Drawing.Point(82, 7);
             this.xmlFileTextBox.Name = "xmlFileTextBox";
+            this.xmlFileTextBox.ReadOnly = true;
             this.xmlFileTextBox.Size = new System.Drawing.Size(216, 20);
             this.xmlFileTextBox.TabIndex = 4;
-            this.xmlFileTextBox.ReadOnly = true;
             // 
             // xmlfilelabel
             // 
@@ -145,7 +148,7 @@
             // 
             // outputTextBox
             // 
-            this.outputTextBox.Location = new System.Drawing.Point(12, 237);
+            this.outputTextBox.Location = new System.Drawing.Point(15, 261);
             this.outputTextBox.Multiline = true;
             this.outputTextBox.Name = "outputTextBox";
             this.outputTextBox.ReadOnly = true;
@@ -155,7 +158,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 221);
+            this.label3.Location = new System.Drawing.Point(15, 245);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 13);
             this.label3.TabIndex = 22;
@@ -171,11 +174,41 @@
             this.pathBtn.UseVisualStyleBackColor = true;
             this.pathBtn.Click += new System.EventHandler(this.pathBtn_Click);
             // 
+            // albumSearchMusicBtn
+            // 
+            this.albumSearchMusicBtn.Location = new System.Drawing.Point(386, 219);
+            this.albumSearchMusicBtn.Name = "albumSearchMusicBtn";
+            this.albumSearchMusicBtn.Size = new System.Drawing.Size(61, 20);
+            this.albumSearchMusicBtn.TabIndex = 26;
+            this.albumSearchMusicBtn.Text = "Search";
+            this.albumSearchMusicBtn.UseVisualStyleBackColor = true;
+            this.albumSearchMusicBtn.Click += new System.EventHandler(this.albumSearchMusicBtn_Click);
+            // 
+            // albumToSearchTextBox
+            // 
+            this.albumToSearchTextBox.Location = new System.Drawing.Point(82, 219);
+            this.albumToSearchTextBox.Name = "albumToSearchTextBox";
+            this.albumToSearchTextBox.ReadOnly = true;
+            this.albumToSearchTextBox.Size = new System.Drawing.Size(298, 20);
+            this.albumToSearchTextBox.TabIndex = 25;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 222);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 13);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Album Name:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 343);
+            this.ClientSize = new System.Drawing.Size(466, 363);
+            this.Controls.Add(this.albumSearchMusicBtn);
+            this.Controls.Add(this.albumToSearchTextBox);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.pathBtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.outputTextBox);
@@ -213,6 +246,9 @@
         private System.Windows.Forms.TextBox outputTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button pathBtn;
+        private System.Windows.Forms.Button albumSearchMusicBtn;
+        private System.Windows.Forms.TextBox albumToSearchTextBox;
+        private System.Windows.Forms.Label label4;
     }
 }
 

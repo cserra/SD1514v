@@ -10,7 +10,9 @@ namespace Client
     {
         bool TestConnection();
         void SearchMusic(IPeer p, string musicName, int ttl);
-        void MarkAsFound(IPeer p, string music);
+        void SearchAlbum(IPeer p, string albumName, int ttl);
+        void MarkAsFoundMusic(IPeer p, string music);
+        void MarkAsFoundAlbum(IPeer p, string album);
         string GetPeerURI();
     }
 }

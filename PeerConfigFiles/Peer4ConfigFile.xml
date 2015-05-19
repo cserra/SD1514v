@@ -9,7 +9,7 @@
     <string>album8</string>
   </Albuns>
   <AssociatedPeers>
-    <string>tcp://localhost:1236/RemotePeer.soap</string>
+    <string>http://localhost:1236/RemotePeer.soap</string>
     <string>http://localhost:1234/RemotePeer.soap</string>
   </AssociatedPeers>
 </MusicCollection>

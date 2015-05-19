@@ -43,6 +43,7 @@ namespace Client
             xmlFileTextBox.ReadOnly = true;
             addPeerTextBox.ReadOnly = false;
             musicToSearchTextBox.ReadOnly = false;
+            albumToSearchTextBox.ReadOnly = false;
             outputTextBox.Text = "Peer created. Uri: "+_peer.GetPeerURI();
         }
 
@@ -68,6 +69,12 @@ namespace Client
             if (!CheckIfPeerIsCreated()) return;
             string music = musicToSearchTextBox.Text;
             _peer.SearchMusic(_peer, music, Peer.Ttl);
+        }
+        private void albumSearchMusicBtn_Click(object sender, EventArgs e)
+        {
+            if (!CheckIfPeerIsCreated()) return;
+            string album = albumToSearchTextBox.Text;
+            _peer.SearchAlbum(_peer, album, Peer.Ttl);
         }
 
         private Boolean CheckIfPeerIsCreated()
@@ -118,5 +125,6 @@ namespace Client
                 }*/
             }
         }
+
     }
 }

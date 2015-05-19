@@ -10,6 +10,7 @@ namespace Client
         public List<string> MyAlbum = new List<string>();
         public List<IPeer> MyKnownPeers = new List<IPeer>();
         private readonly Dictionary<string, IPeer> _musicsOnKnownPeers = new Dictionary<string, IPeer>();
+        private readonly Dictionary<string, IPeer> _albumOnKnownPeers = new Dictionary<string, IPeer>();
         private Form1 _form;
         public string Uri;
         public string ConnectionType;
@@ -23,7 +24,7 @@ namespace Client
             SetOutputMsg("Searching for music " + musicName);
             if (MyMusics.Contains(musicName))
             {
-                p.MarkAsFound(this, musicName);
+                p.MarkAsFoundMusic(this, musicName);
                 return;
             }
             if (_musicsOnKnownPeers.ContainsKey(musicName))
@@ -31,7 +32,7 @@ namespace Client
                 IPeer peer = _musicsOnKnownPeers[musicName];
                 try
                 {
-                    p.MarkAsFound(peer, musicName);
+                    p.MarkAsFoundMusic(peer, musicName);
                 }
                 catch (Exception)
                 {
@@ -53,14 +54,75 @@ namespace Client
 
             }
         }
-        public void MarkAsFound(IPeer p, string music)
+        public void SearchAlbum(IPeer p, string album, int ttl)
         {
+            SetOutputMsg("Request from " + p.GetPeerURI());
+            SetOutputMsg("Searching for album " + album);
+            if (MyAlbum.Contains(album))
+            {
+                p.MarkAsFoundAlbum(this, album);
+                return;
+            }
+            if (_albumOnKnownPeers.ContainsKey(album))
+            {
+                IPeer peer = _albumOnKnownPeers[album];
+                try
+                {
+                    p.MarkAsFoundAlbum(peer, album);
+                }
+                catch (Exception)
+                {
+                    SetOutputMsg("Peer to respond not found!!!");
+                }
+                return;
+            }
+            if (--ttl == 0) return;
+            foreach (IPeer peer in MyKnownPeers)
+            {
+                try
+                {
+                    peer.SearchAlbum(p, album, ttl);
+                }
+                catch (Exception)
+                {
+                    MyKnownPeers.Remove(peer);
+                }
+
+            }
+        }
+        public void MarkAsFoundMusic(IPeer p, string music)
+        {
+            try
+            {
+                p.TestConnection();
+            }
+            catch (Exception e)
+            {
+                return;             //does nothing becouse p is no longer valid
+            }
             if (!_musicsOnKnownPeers.ContainsKey(music))
             {
                 _musicsOnKnownPeers.Add(music, p);
                 _form.SetOutputMessage("Found music in Peer " + p.GetPeerURI());
             }
             
+        }
+        public void MarkAsFoundAlbum(IPeer p, string album)
+        {
+            try
+            {
+                p.TestConnection();
+            }
+            catch (Exception e)
+            {
+                return;             //does nothing becouse p is no longer valid
+            }
+            if (!_albumOnKnownPeers.ContainsKey(album))
+            {
+                _albumOnKnownPeers.Add(album, p);
+                _form.SetOutputMessage("Found album in Peer " + p.GetPeerURI());
+            }
+
         }
 
         public string GetPeerURI(){return Uri;}
@@ -88,5 +150,6 @@ namespace Client
             
       
         }
+
     }
 }
