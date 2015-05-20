@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PeerConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" PeerUri="http://localhost:1234/RemotePeer.soap" ConnectionType="http" Port="1234">
+  <Musics>
+    <string>music1</string>
+    <string>music2</string>
+  </Musics>
+  <Albuns>
+    <string>album1</string>
+    <string>album2</string>
+  </Albuns>
+</PeerConfig>

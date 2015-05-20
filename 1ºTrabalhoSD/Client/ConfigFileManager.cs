@@ -56,7 +56,7 @@ namespace Client
         }
     }
 
-    [XmlRootAttribute("MusicCollection",IsNullable = false)]
+    [XmlRootAttribute("PeerConfig",IsNullable = false)]
     public class PeerConfig
     {
         [XmlAttribute]

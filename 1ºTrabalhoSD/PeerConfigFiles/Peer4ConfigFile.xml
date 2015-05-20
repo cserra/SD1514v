@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MusicCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" PeerUri="http://localhost:1237/RemotePeer.soap"  ConnectionType="http" Port="1237">
+<PeerConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" PeerUri="http://localhost:1237/RemotePeer.soap"  ConnectionType="http" Port="1237">
   <Musics>
     <string>music7</string>
     <string>music8</string>
@@ -12,4 +12,4 @@
     <string>http://localhost:1236/RemotePeer.soap</string>
     <string>http://localhost:1234/RemotePeer.soap</string>
   </AssociatedPeers>
-</MusicCollection>
+</PeerConfig>
