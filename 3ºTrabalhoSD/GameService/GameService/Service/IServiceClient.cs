@@ -7,7 +7,7 @@ namespace Service.Service
     {
         [FaultContract(typeof(RegisterException))]
         [OperationContract] void RegisterPlayer(string name); //returns new player ID
-        [OperationContract] void RemovePlayer(string playerId);
+        [OperationContract] void RemovePlayer();
         [OperationContract] void Play(int x, int y);
     }
 }

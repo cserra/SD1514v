@@ -5,8 +5,9 @@ namespace Manager
 {
     public partial class Form1 : Form
     {
-        private bool isCreated = false;
-        private ServiceReference.IServiceManager serv;
+        private bool isSuspended = false;
+        private bool _isCreated = false;
+        private ServiceReference.IServiceManager _serv;
 
         public Form1()
         {
@@ -15,7 +16,7 @@ namespace Manager
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            if (isCreated)
+            if (_isCreated)
             {
                 outputPanel.AppendText("Serviço já criado\n");
                 return;
@@ -23,21 +24,66 @@ namespace Manager
             try
             {
                 int size = int.Parse(sizeInput.Text);
-                servicoLabel.Text = "Serviço criado";
                 if (size < 0)
                 {
                     outputPanel.AppendText("Tamanho incorreto\n");
                     return;
                 }
-                serv = new ServiceReference.ServiceManagerClient();
-                serv.CreateBoard(size);
+                _serv = new ServiceReference.ServiceManagerClient();
+                _serv.CreateBoard(size);
                 sizeInput.ReadOnly = true;
-                isCreated = true;
+                _isCreated = true;
+                servicoLabel.Text = "Serviço criado";
             }
             catch (Exception)
             {
                 outputPanel.AppendText("Input invalido\n");
             }
+        }
+
+        private void newGameBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int size = int.Parse(sizeInput.Text);
+                if (size < 0)
+                {
+                    outputPanel.AppendText("Tamanho incorreto\n");
+                    return;
+                }
+                _serv = new ServiceReference.ServiceManagerClient();
+                _serv.CreateBoard(size);
+                sizeInput.ReadOnly = true;
+                _isCreated = true;
+            }
+            catch (Exception)
+            {
+                outputPanel.AppendText("Input invalido\n");
+            }
+        }
+
+        private void publishBtn_Click(object sender, EventArgs e)
+        {
+            string p = publiInput.Text;
+            if (p.Length > 0)
+            {
+                _serv.SendData(p);
+            }
+        }
+
+        private void suspendBtn_Click(object sender, EventArgs e)
+        {
+            isSuspended = !isSuspended;
+            if (isSuspended)
+                suspendBtn.Text = "Resume Game";
+            else
+                suspendBtn.Text = "Stop Game";
+            _serv.SuspendGame(isSuspended);
+        }
+
+        private void endGameBtn_Click(object sender, EventArgs e)
+        {
+            _serv.EndGame();
         }
     }
 }

@@ -70,10 +70,10 @@ namespace Manager.ServiceReference {
         System.Threading.Tasks.Task RegisterPlayerAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="Silverlight/IServiceClient/RemovePlayer", ReplyAction="Silverlight/IServiceClient/RemovePlayerResponse")]
-        void RemovePlayer(string playerId);
+        void RemovePlayer();
         
         [System.ServiceModel.OperationContractAttribute(Action="Silverlight/IServiceClient/RemovePlayer", ReplyAction="Silverlight/IServiceClient/RemovePlayerResponse")]
-        System.Threading.Tasks.Task RemovePlayerAsync(string playerId);
+        System.Threading.Tasks.Task RemovePlayerAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="Silverlight/IServiceClient/Play", ReplyAction="Silverlight/IServiceClient/PlayResponse")]
         void Play(int x, int y);
@@ -131,12 +131,12 @@ namespace Manager.ServiceReference {
             return base.Channel.RegisterPlayerAsync(name);
         }
         
-        public void RemovePlayer(string playerId) {
-            base.Channel.RemovePlayer(playerId);
+        public void RemovePlayer() {
+            base.Channel.RemovePlayer();
         }
         
-        public System.Threading.Tasks.Task RemovePlayerAsync(string playerId) {
-            return base.Channel.RemovePlayerAsync(playerId);
+        public System.Threading.Tasks.Task RemovePlayerAsync() {
+            return base.Channel.RemovePlayerAsync();
         }
         
         public void Play(int x, int y) {
@@ -157,6 +157,24 @@ namespace Manager.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceManager/CreateBoard", ReplyAction="http://tempuri.org/IServiceManager/CreateBoardResponse")]
         System.Threading.Tasks.Task CreateBoardAsync(int size);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceManager/SendData", ReplyAction="http://tempuri.org/IServiceManager/SendDataResponse")]
+        void SendData(string value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceManager/SendData", ReplyAction="http://tempuri.org/IServiceManager/SendDataResponse")]
+        System.Threading.Tasks.Task SendDataAsync(string value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceManager/SuspendGame", ReplyAction="http://tempuri.org/IServiceManager/SuspendGameResponse")]
+        void SuspendGame(bool value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceManager/SuspendGame", ReplyAction="http://tempuri.org/IServiceManager/SuspendGameResponse")]
+        System.Threading.Tasks.Task SuspendGameAsync(bool value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceManager/EndGame", ReplyAction="http://tempuri.org/IServiceManager/EndGameResponse")]
+        void EndGame();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceManager/EndGame", ReplyAction="http://tempuri.org/IServiceManager/EndGameResponse")]
+        System.Threading.Tasks.Task EndGameAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -192,6 +210,30 @@ namespace Manager.ServiceReference {
         
         public System.Threading.Tasks.Task CreateBoardAsync(int size) {
             return base.Channel.CreateBoardAsync(size);
+        }
+        
+        public void SendData(string value) {
+            base.Channel.SendData(value);
+        }
+        
+        public System.Threading.Tasks.Task SendDataAsync(string value) {
+            return base.Channel.SendDataAsync(value);
+        }
+        
+        public void SuspendGame(bool value) {
+            base.Channel.SuspendGame(value);
+        }
+        
+        public System.Threading.Tasks.Task SuspendGameAsync(bool value) {
+            return base.Channel.SuspendGameAsync(value);
+        }
+        
+        public void EndGame() {
+            base.Channel.EndGame();
+        }
+        
+        public System.Threading.Tasks.Task EndGameAsync() {
+            return base.Channel.EndGameAsync();
         }
     }
 }

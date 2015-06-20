@@ -31,7 +31,6 @@
             this.publicityPanel = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.outputPanel = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.PlayBtn = new System.Windows.Forms.Button();
             this.yInput = new System.Windows.Forms.TextBox();
             this.xInput = new System.Windows.Forms.TextBox();
@@ -40,11 +39,13 @@
             this.userNameInput = new System.Windows.Forms.TextBox();
             this.UserName = new System.Windows.Forms.Label();
             this.registerBtn = new System.Windows.Forms.Button();
+            this.playerStatusOutput = new System.Windows.Forms.TextBox();
+            this.unregisterBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // publicityPanel
             // 
-            this.publicityPanel.Location = new System.Drawing.Point(12, 240);
+            this.publicityPanel.Location = new System.Drawing.Point(12, 223);
             this.publicityPanel.Multiline = true;
             this.publicityPanel.Name = "publicityPanel";
             this.publicityPanel.ReadOnly = true;
@@ -66,21 +67,12 @@
             this.outputPanel.Multiline = true;
             this.outputPanel.Name = "outputPanel";
             this.outputPanel.ReadOnly = true;
-            this.outputPanel.Size = new System.Drawing.Size(459, 134);
+            this.outputPanel.Size = new System.Drawing.Size(459, 117);
             this.outputPanel.TabIndex = 33;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(210, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
-            this.label3.TabIndex = 32;
-            this.label3.Text = "Unregistered";
             // 
             // PlayBtn
             // 
-            this.PlayBtn.Location = new System.Drawing.Point(369, 47);
+            this.PlayBtn.Location = new System.Drawing.Point(156, 55);
             this.PlayBtn.Name = "PlayBtn";
             this.PlayBtn.Size = new System.Drawing.Size(54, 23);
             this.PlayBtn.TabIndex = 31;
@@ -90,14 +82,14 @@
             // 
             // yInput
             // 
-            this.yInput.Location = new System.Drawing.Point(293, 49);
+            this.yInput.Location = new System.Drawing.Point(96, 57);
             this.yInput.Name = "yInput";
             this.yInput.Size = new System.Drawing.Size(54, 20);
             this.yInput.TabIndex = 30;
             // 
             // xInput
             // 
-            this.xInput.Location = new System.Drawing.Point(96, 49);
+            this.xInput.Location = new System.Drawing.Point(96, 31);
             this.xInput.Name = "xInput";
             this.xInput.Size = new System.Drawing.Size(54, 20);
             this.xInput.TabIndex = 29;
@@ -105,7 +97,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(206, 52);
+            this.label2.Location = new System.Drawing.Point(19, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 28;
@@ -114,7 +106,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 52);
+            this.label1.Location = new System.Drawing.Point(19, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 27;
@@ -146,15 +138,35 @@
             this.registerBtn.UseVisualStyleBackColor = true;
             this.registerBtn.Click += new System.EventHandler(this.registerBtn_Click);
             // 
+            // playerStatusOutput
+            // 
+            this.playerStatusOutput.Location = new System.Drawing.Point(231, 31);
+            this.playerStatusOutput.Multiline = true;
+            this.playerStatusOutput.Name = "playerStatusOutput";
+            this.playerStatusOutput.ReadOnly = true;
+            this.playerStatusOutput.Size = new System.Drawing.Size(159, 63);
+            this.playerStatusOutput.TabIndex = 36;
+            // 
+            // unregisterBtn
+            // 
+            this.unregisterBtn.Location = new System.Drawing.Point(396, 34);
+            this.unregisterBtn.Name = "unregisterBtn";
+            this.unregisterBtn.Size = new System.Drawing.Size(75, 23);
+            this.unregisterBtn.TabIndex = 37;
+            this.unregisterBtn.Text = "UnRegister";
+            this.unregisterBtn.UseVisualStyleBackColor = true;
+            this.unregisterBtn.Click += new System.EventHandler(this.unregisterBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(477, 329);
+            this.Controls.Add(this.unregisterBtn);
+            this.Controls.Add(this.playerStatusOutput);
             this.Controls.Add(this.publicityPanel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.outputPanel);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.PlayBtn);
             this.Controls.Add(this.yInput);
             this.Controls.Add(this.xInput);
@@ -175,7 +187,6 @@
         private System.Windows.Forms.TextBox publicityPanel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox outputPanel;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button PlayBtn;
         private System.Windows.Forms.TextBox yInput;
         private System.Windows.Forms.TextBox xInput;
@@ -184,6 +195,8 @@
         private System.Windows.Forms.TextBox userNameInput;
         private System.Windows.Forms.Label UserName;
         private System.Windows.Forms.Button registerBtn;
+        private System.Windows.Forms.TextBox playerStatusOutput;
+        private System.Windows.Forms.Button unregisterBtn;
     }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3d727b17-c76d-46e8-a7f3-626c2e39dace" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="517744e8-37b8-4fd5-bcb4-31e9fc5b48fc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,12 +22,12 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/GameService/Service1/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Silverlight.wsdl" MetadataType="Wsdl" ID="67e9f4d7-5d34-407b-856f-456f57636aae" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GameService/Service1/mex" />
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="32d05533-4c57-42ec-a87c-311422a3c008" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GameService/Service1/mex" />
-    <MetadataFile FileName="Silverlight.xsd" MetadataType="Schema" ID="7915d081-9a6a-40b1-b921-27420fb4fa4c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GameService/Service1/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="9110c326-9a75-4a33-acda-5b02829a74d7" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GameService/Service1/mex" />
-    <MetadataFile FileName="Service.Service.xsd" MetadataType="Schema" ID="de5d32fb-e6cb-4299-a5ff-c3975ff18ded" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GameService/Service1/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="24210404-0135-434d-9f46-38a7e5eec7d1" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GameService/Service1/mex" />
+    <MetadataFile FileName="Silverlight.wsdl" MetadataType="Wsdl" ID="69d14c77-ffb1-478e-9817-0d1236fbc2ba" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GameService/Service1/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="12c22780-8bbb-40a7-b76a-be4c8ca3ccee" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GameService/Service1/mex" />
+    <MetadataFile FileName="Silverlight.xsd" MetadataType="Schema" ID="f6663b82-ac15-4baa-b068-7dd8483bcbfa" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GameService/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="9c4fa6f8-cee3-4acd-bf17-1796e0352935" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GameService/Service1/mex" />
+    <MetadataFile FileName="Service.Service.xsd" MetadataType="Schema" ID="8a5412b6-2b28-4e90-accc-cc51b4bfae1a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GameService/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="cf75bafc-b86e-4ff0-a923-599c5d0052ce" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GameService/Service1/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

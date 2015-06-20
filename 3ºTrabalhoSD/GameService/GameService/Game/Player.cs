@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel.Security.Tokens;
-using System.Text;
-using System.Threading.Tasks;
-using Service.Service;
+﻿using Service.Service;
 
 namespace Service.Game
 {
@@ -32,6 +26,11 @@ namespace Service.Game
         {
             Lives--;
             return Lives == 0;
+        }
+
+        public override string ToString()
+        {
+            return Name + "\r\n" + "Vidas: " + Lives + "\n";
         }
     }
 }
