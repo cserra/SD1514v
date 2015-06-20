@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="Silverlight" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="Silverlight" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="Silverlight/Imports">
+      <xsd:import namespace="Silverlight" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Service.Service" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServiceClient_RegisterPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IServiceClient_RegisterPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceClient_RegisterPlayer_RegisterExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/Service.Service" name="detail" element="q1:RegisterException" />
+  </wsdl:message>
+  <wsdl:message name="IServiceClient_RemovePlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePlayer" />
+  </wsdl:message>
+  <wsdl:message name="IServiceClient_RemovePlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceClient_Play_InputMessage">
+    <wsdl:part name="parameters" element="tns:Play" />
+  </wsdl:message>
+  <wsdl:message name="IServiceClient_Play_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlayResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceClient_SetPublicity_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetPublicity" />
+  </wsdl:message>
+  <wsdl:message name="IServiceClient_SetNotification_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetNotification" />
+  </wsdl:message>
+  <wsdl:message name="IServiceClient_SetPlayerData_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetPlayerData" />
+  </wsdl:message>
+  <wsdl:portType name="IServiceClient">
+    <wsdl:operation name="RegisterPlayer">
+      <wsdl:input wsaw:Action="Silverlight/IServiceClient/RegisterPlayer" message="tns:IServiceClient_RegisterPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="Silverlight/IServiceClient/RegisterPlayerResponse" message="tns:IServiceClient_RegisterPlayer_OutputMessage" />
+      <wsdl:fault wsaw:Action="Silverlight/IServiceClient/RegisterPlayerRegisterExceptionFault" name="RegisterExceptionFault" message="tns:IServiceClient_RegisterPlayer_RegisterExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemovePlayer">
+      <wsdl:input wsaw:Action="Silverlight/IServiceClient/RemovePlayer" message="tns:IServiceClient_RemovePlayer_InputMessage" />
+      <wsdl:output wsaw:Action="Silverlight/IServiceClient/RemovePlayerResponse" message="tns:IServiceClient_RemovePlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Play">
+      <wsdl:input wsaw:Action="Silverlight/IServiceClient/Play" message="tns:IServiceClient_Play_InputMessage" />
+      <wsdl:output wsaw:Action="Silverlight/IServiceClient/PlayResponse" message="tns:IServiceClient_Play_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPublicity">
+      <wsdl:output wsaw:Action="Silverlight/IServiceClient/SetPublicity" message="tns:IServiceClient_SetPublicity_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetNotification">
+      <wsdl:output wsaw:Action="Silverlight/IServiceClient/SetNotification" message="tns:IServiceClient_SetNotification_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPlayerData">
+      <wsdl:output wsaw:Action="Silverlight/IServiceClient/SetPlayerData" message="tns:IServiceClient_SetPlayerData_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
