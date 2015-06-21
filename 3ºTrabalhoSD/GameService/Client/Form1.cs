@@ -3,6 +3,7 @@ using System.ServiceModel;
 using System.Threading;
 using System.Windows.Forms;
 using Client.ServiceReference;
+using Client.ServiceReference1;
 using Service.Service;
 using IServiceClient = Client.ServiceReference.IServiceClient;
 
@@ -12,7 +13,8 @@ namespace Client
     {
         private readonly SynchronizationContext _syncCtx;
         private MyClass _mc;
-
+        private string _playerId;
+        private string language;
         public Form1()
         {
             InitializeComponent();
@@ -22,13 +24,14 @@ namespace Client
 
         private void registerBtn_Click(object sender, EventArgs e)
         {
-            string _playerId = userNameInput.Text;
+            _playerId = userNameInput.Text;
+            language = languageBox.Text;
             if (_playerId.Length == 0)
             { 
                 outputPanel.AppendText("Empty test\n");
                 return;
             }
-            _mc.RegisterPlayer(userNameInput.Text);
+            _mc.RegisterPlayer(userNameInput.Text, language);
             outputPanel.ReadOnly = true;
         }
 
@@ -53,7 +56,9 @@ namespace Client
 
         public void SetPublicity(string s)
         {
-            _syncCtx.Post(state => publicityPanel.AppendText(s + "\n"), null);
+            MyTranslatorClient svcT = new MyTranslatorClient();
+            string translated = svcT.Translate(s, language);
+            _syncCtx.Post(state => publicityPanel.AppendText(translated + "\n"), null);
         }
 
         public void SetPlayerStatus(string s)
@@ -84,12 +89,12 @@ namespace Client
             _f = f;
         }
 
-        public void RegisterPlayer(string playerId)
+        public void RegisterPlayer(string playerId, string lang)
         {
             _serv = new ServiceClientClient(new InstanceContext(this));
             try
             {
-                _serv.RegisterPlayer(playerId);
+                _serv.RegisterPlayer(playerId, lang);
             }
             catch (FaultException<RegisterException> exception)
             {

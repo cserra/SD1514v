@@ -21,7 +21,7 @@ namespace Service
         private Board _jogo;
         private readonly Dictionary<string, Player> _players = new Dictionary<string, Player>();
 
-        public void RegisterPlayer(string name)
+        public void RegisterPlayer(string name, string lang)
         {
             string sessionId = OperationContext.Current.SessionId;
             var callback = OperationContext.Current.GetCallbackChannel<INotification>();
@@ -33,7 +33,7 @@ namespace Service
                 NotifyPlayer(_players[sessionId], "Player already registered");
                 return;
             }
-            var j = new Player(name, sessionId, callback);
+            var j = new Player(name, sessionId, lang, callback);
             _players.Add(sessionId, j);
             NotifyPlayer(j, j.ToString());
             NotifyAll("New player " + name);
