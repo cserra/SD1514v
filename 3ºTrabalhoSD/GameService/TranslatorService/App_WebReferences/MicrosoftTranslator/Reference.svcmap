@@ -21,10 +21,10 @@
     <MetadataSource Address="http://api.microsofttranslator.com/V2/soap.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="soap2.xsd" MetadataType="Schema" ID="9502879d-224d-418b-a433-3a0bd5a42a19" SourceId="1" SourceUrl="http://api.microsofttranslator.com/V2/soap.svc?xsd=xsd1" />
     <MetadataFile FileName="soap.xsd" MetadataType="Schema" ID="827d3c7a-f0a7-4981-b02f-1011fe9f5921" SourceId="1" SourceUrl="http://api.microsofttranslator.com/V2/soap.svc?xsd=xsd3" />
     <MetadataFile FileName="SoapService.wsdl" MetadataType="Wsdl" ID="ee9fd91f-64c7-4a46-a19c-4fc4585687ee" SourceId="1" SourceUrl="http://api.microsofttranslator.com/V2/soap.svc" />
     <MetadataFile FileName="soap1.xsd" MetadataType="Schema" ID="ee3869fb-8fb5-43c4-b49a-f108ef878616" SourceId="1" SourceUrl="http://api.microsofttranslator.com/V2/soap.svc?xsd=xsd2" />
-    <MetadataFile FileName="soap2.xsd" MetadataType="Schema" ID="9502879d-224d-418b-a433-3a0bd5a42a19" SourceId="1" SourceUrl="http://api.microsofttranslator.com/V2/soap.svc?xsd=xsd1" />
     <MetadataFile FileName="soap.wsdl" MetadataType="Wsdl" ID="692efb08-aad2-4f82-87ed-28b930b4fa65" SourceId="1" SourceUrl="http://api.microsofttranslator.com/V2/soap.svc?wsdl=wsdl0" />
     <MetadataFile FileName="soap3.xsd" MetadataType="Schema" ID="b70035e8-d1ed-4338-b5a9-948b0898c8bb" SourceId="1" SourceUrl="http://api.microsofttranslator.com/V2/soap.svc?xsd=xsd0" />
   </Metadata>

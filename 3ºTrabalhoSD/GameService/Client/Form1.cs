@@ -3,7 +3,7 @@ using System.ServiceModel;
 using System.Threading;
 using System.Windows.Forms;
 using Client.ServiceReference;
-using Client.ServiceReference1;
+using Client.TranslatorReference;
 using Service.Service;
 using IServiceClient = Client.ServiceReference.IServiceClient;
 

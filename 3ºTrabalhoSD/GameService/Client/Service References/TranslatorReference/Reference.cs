@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Client.ServiceReference1 {
+namespace Client.TranslatorReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IMyTranslator")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TranslatorReference.IMyTranslator")]
     public interface IMyTranslator {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyTranslator/Translate", ReplyAction="http://tempuri.org/IMyTranslator/TranslateResponse")]
@@ -23,12 +23,12 @@ namespace Client.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IMyTranslatorChannel : Client.ServiceReference1.IMyTranslator, System.ServiceModel.IClientChannel {
+    public interface IMyTranslatorChannel : Client.TranslatorReference.IMyTranslator, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class MyTranslatorClient : System.ServiceModel.ClientBase<Client.ServiceReference1.IMyTranslator>, Client.ServiceReference1.IMyTranslator {
+    public partial class MyTranslatorClient : System.ServiceModel.ClientBase<Client.TranslatorReference.IMyTranslator>, Client.TranslatorReference.IMyTranslator {
         
         public MyTranslatorClient() {
         }

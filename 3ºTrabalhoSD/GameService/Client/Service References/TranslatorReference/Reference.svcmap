@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a8003cfe-a8b0-46f4-9443-bf60a0692216" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9bc8f1b6-d45a-4b28-88ed-16381a6d9cf5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,13 +19,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:53061/MyTranslator.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:52452/MyTranslator.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="MyTranslator.disco" MetadataType="Disco" ID="d0af8c8b-95c1-46cc-a780-de82ad6bdbcf" SourceId="1" SourceUrl="http://localhost:53061/MyTranslator.svc?disco" />
-    <MetadataFile FileName="MyTranslator.xsd" MetadataType="Schema" ID="3a8e0705-c1f4-4452-81fb-dd0d83218729" SourceId="1" SourceUrl="http://localhost:53061/MyTranslator.svc?xsd=xsd0" />
-    <MetadataFile FileName="MyTranslator.wsdl" MetadataType="Wsdl" ID="6cd005a1-27ab-42b5-95a3-170df79323cf" SourceId="1" SourceUrl="http://localhost:53061/MyTranslator.svc?wsdl" />
-    <MetadataFile FileName="MyTranslator1.xsd" MetadataType="Schema" ID="5e1a1404-37ee-4ee0-9598-ffd89cd66218" SourceId="1" SourceUrl="http://localhost:53061/MyTranslator.svc?xsd=xsd1" />
+    <MetadataFile FileName="MyTranslator.xsd" MetadataType="Schema" ID="9a22f51d-977f-4628-add6-1f8d828b8dcd" SourceId="1" SourceUrl="http://localhost:52452/MyTranslator.svc?xsd=xsd0" />
+    <MetadataFile FileName="MyTranslator.disco" MetadataType="Disco" ID="a03cfb44-a304-4eec-9f1d-8fc86b2d8c1b" SourceId="1" SourceUrl="http://localhost:52452/MyTranslator.svc?disco" />
+    <MetadataFile FileName="MyTranslator1.xsd" MetadataType="Schema" ID="83e12fc2-c7b2-437a-99fd-3103fb39fb8a" SourceId="1" SourceUrl="http://localhost:52452/MyTranslator.svc?xsd=xsd1" />
+    <MetadataFile FileName="MyTranslator.wsdl" MetadataType="Wsdl" ID="69d82cd7-6cfb-4a5d-ad85-40fb8265e138" SourceId="1" SourceUrl="http://localhost:52452/MyTranslator.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -12,28 +12,28 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager", "Manager\Manager.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{BCE0D21D-950B-40F7-A972-76F1AFD3A53A}"
 	ProjectSection(ProjectDependencies) = postProject
-		{5D2A8B1B-6D9A-4F2B-83A7-ED0CE38A1A24} = {5D2A8B1B-6D9A-4F2B-83A7-ED0CE38A1A24}
+		{3D6A2647-C025-4303-B91E-FF4263B5C93E} = {3D6A2647-C025-4303-B91E-FF4263B5C93E}
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite2(3)", "http://localhost:53061", "{5D2A8B1B-6D9A-4F2B-83A7-ED0CE38A1A24}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TranslatorService", "http://localhost:52452", "{3D6A2647-C025-4303-B91E-FF4263B5C93E}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_53061"
-		Debug.AspNetCompiler.PhysicalPath = "WebSite2\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53061\"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_52452"
+		Debug.AspNetCompiler.PhysicalPath = "TranslatorService\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52452\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_53061"
-		Release.AspNetCompiler.PhysicalPath = "WebSite2\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53061\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_52452"
+		Release.AspNetCompiler.PhysicalPath = "TranslatorService\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52452\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "WebSite2\"
+		SlnRelativePath = "TranslatorService\"
 	EndProjectSection
 EndProject
 Global
@@ -54,10 +54,10 @@ Global
 		{BCE0D21D-950B-40F7-A972-76F1AFD3A53A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCE0D21D-950B-40F7-A972-76F1AFD3A53A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCE0D21D-950B-40F7-A972-76F1AFD3A53A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D2A8B1B-6D9A-4F2B-83A7-ED0CE38A1A24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D2A8B1B-6D9A-4F2B-83A7-ED0CE38A1A24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D2A8B1B-6D9A-4F2B-83A7-ED0CE38A1A24}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D2A8B1B-6D9A-4F2B-83A7-ED0CE38A1A24}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{3D6A2647-C025-4303-B91E-FF4263B5C93E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D6A2647-C025-4303-B91E-FF4263B5C93E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D6A2647-C025-4303-B91E-FF4263B5C93E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D6A2647-C025-4303-B91E-FF4263B5C93E}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
