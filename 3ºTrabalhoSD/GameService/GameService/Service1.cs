@@ -19,7 +19,7 @@ namespace Service
         };
 
         private Board _jogo;
-        private readonly Dictionary<string, Player> _players = new Dictionary<string, Player>();
+        private Dictionary<string, Player> _players;
 
         public void RegisterPlayer(string name, string lang)
         {
@@ -49,6 +49,11 @@ namespace Service
         public void Play(int x, int y)
         {
             string sessionId = OperationContext.Current.SessionId;
+            if (!_players.ContainsKey(sessionId))
+            {
+                OperationContext.Current.GetCallbackChannel<INotification>().SetNotification("You are not registered!!");
+                return;
+            }
             Player p = _players[sessionId];
             if (!_hasBoard)
             {
@@ -80,6 +85,7 @@ namespace Service
                 case 4:
                     NotifyAll("Player " + p.Name + " just died");
                     NotifyPlayer(p, Msgs[4]);
+                    _players.Remove(sessionId);
                     break;
                 case 5:
                     NotifyPlayer(p, Msgs[5]);
@@ -115,8 +121,10 @@ namespace Service
         {
             if (_hasBoard)
                 NotifyAll("Game restarted");
+            _players = new Dictionary<string, Player>();
             _jogo = new Board(size);
             _hasBoard = true;
+            NotifyAll("Started new game.");
         }
 
         public void SendData(string value)
