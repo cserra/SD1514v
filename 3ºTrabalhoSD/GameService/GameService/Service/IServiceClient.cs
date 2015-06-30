@@ -6,7 +6,7 @@ namespace Service.Service
     public interface IServiceClient
     {
         [FaultContract(typeof(RegisterException))]
-        [OperationContract] void RegisterPlayer(string name, string lang); //returns new player ID
+        [OperationContract] void RegisterPlayer(string name, string lang);
         [OperationContract] void RemovePlayer();
         [OperationContract] void Play(int x, int y);
     }
